@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 function RootLayout() {
     return (
         <>
-            <div className='app'>
+            <div className='saasPortal'>
                 <Outlet />
             </div>
         </>

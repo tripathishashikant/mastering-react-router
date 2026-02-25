@@ -1,10 +1,11 @@
 import { createBrowserRouter as Router } from "react-router-dom"
 
 import RootLayout from "@/layouts/RootLayout"
-import Test from "@/pages/Test"
+import DashboardLayout from "@/layouts/DashboardLayout"
 import Login from '@/pages/Login'
+import Dashboard from '@/pages/Dashboard'
 
-import { rootLoader, loginLoader } from "@/utils/loader.utils"
+import { rootLoader, loginLoader, dashboardLoader } from "@/utils/loader.utils"
 import { loginAction } from '@/utils/actions.utils'
 
 const routes = [
@@ -15,7 +16,18 @@ const routes = [
             {
                 index: true,
                 loader: rootLoader,
-                Component: Test
+            },
+            {
+                id: 'projectsData',
+                path: 'dashboard',
+                loader: dashboardLoader,
+                Component: DashboardLayout,
+                children: [
+                    {
+                        index: true,
+                        Component: Dashboard,
+                    }
+                ]
             },
             {
                 path: 'login',

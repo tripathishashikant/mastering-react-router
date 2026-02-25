@@ -6,6 +6,8 @@ export const loginAction = async ( { request }) => {
     const username = formData.get('username')
     const pass = formData.get('pass')
 
+    // TODO: compare username and password using user data and set user token
+
     if (username === 'admin' && pass === '123') {
         setUserToken()
 
