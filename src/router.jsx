@@ -4,11 +4,13 @@ import RootLayout from "@/layouts/RootLayout"
 import DashboardLayout from "@/layouts/DashboardLayout"
 import Login from '@/pages/Login'
 import Dashboard from '@/pages/Dashboard'
+import Posts from '@/pages/Posts'
+import Post from '@/pages/Post'
 
 import { rootLoader, loginLoader, dashboardLoader } from "@/utils/loader.utils"
 import { loginAction } from '@/utils/actions.utils'
 
-const routes = [
+export const routes = [
     {
         path: "/",
         Component: RootLayout,
@@ -18,7 +20,7 @@ const routes = [
                 loader: rootLoader,
             },
             {
-                id: 'projectsData',
+                id: 'userData',
                 path: 'dashboard',
                 loader: dashboardLoader,
                 Component: DashboardLayout,
@@ -26,6 +28,19 @@ const routes = [
                     {
                         index: true,
                         Component: Dashboard,
+                    },
+                    {
+                        path: 'posts',
+                        children: [
+                            {
+                                index: true,
+                                Component: Posts,
+                            },
+                            {
+                                path:':postId',
+                                Component: Post,
+                            }
+                        ]
                     }
                 ]
             },

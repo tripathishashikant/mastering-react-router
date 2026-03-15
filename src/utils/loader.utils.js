@@ -4,18 +4,20 @@ import { isAuthenticated } from "@/utils/auth.utils"
 
 export const rootLoader = () => redirect('/dashboard')
 
-export const dashboardLoader = () => {
+export const dashboardLoader = async () => {
     if (!isAuthenticated()) return redirect('/login')
 
-    // TODO: fetch projects data here
+    // const response = await fetch('posts.json')
+    // const posts = await response.json()
     
     return null
 }
 
-export const loginLoader = () => {
+export const loginLoader = async () => {
     if (isAuthenticated()) return redirect('/')
-    
-    // TODO: fetch user data here
 
-    return null
+    const response = await fetch('users.json')
+    const users = await response.json()
+
+    return users
 }
